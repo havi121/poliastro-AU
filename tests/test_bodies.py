@@ -6,7 +6,7 @@ from poliastro import bodies
 
 
 def test_body_has_k_given_in_constructor():
-    k = 3.98e5 * u.km ** 3 / u.s ** 2
+    k = 3.98e5 * u.au ** 3 / u.s ** 2
     earth = bodies.Body(None, k, "")
     assert earth.k == k
 
@@ -35,7 +35,7 @@ def test_body_printing_has_name_and_symbol():
 def test_earth_has_k_given_in_literature():
     expected_k = 3.986004418e14 * u.m ** 3 / u.s ** 2
     k = bodies.Earth.k
-    assert_quantity_allclose(k.decompose([u.km, u.s]), expected_k)
+    assert_quantity_allclose(k.decompose([u.au, u.s]), expected_k)
 
 
 def test_from_relative():

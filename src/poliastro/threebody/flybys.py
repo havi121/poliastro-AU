@@ -5,10 +5,10 @@ from poliastro.util import norm
 
 
 @u.quantity_input(
-    v_spacecraft=u.km / u.s,
-    v_body=u.km / u.s,
-    k=u.km ** 3 / u.s ** 2,
-    r_p=u.km,
+    v_spacecraft=u.au / u.s,
+    v_body=u.au / u.s,
+    k=u.au ** 3 / u.s ** 2,
+    r_p=u.au,
     theta=u.deg,
 )
 def compute_flyby(v_spacecraft, v_body, k, r_p, theta=0 * u.deg):

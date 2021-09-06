@@ -155,7 +155,7 @@ class Jacchia77:
             self._H_correction(alt, Texo)
 
         return (
-            self.Z * u.km,
+            self.Z * u.au,
             self.T * u.K,
             np.array(self.CN2) * 1e6 * (u.m) ** -3,
             np.array(self.CO2) * 1e6 * (u.m) ** -3,
@@ -267,7 +267,7 @@ class Jacchia77:
             [altitude(Z), T, N2, O2, O, Ar, He, H, Total number density, Mean Molecular weight]
         """
         # checking if the units entered are km
-        if alt.unit == u.km:
+        if alt.unit == u.au:
             if 150 <= alt.value < 500:
                 alt_properties = self._altitude_profile(500, Texo.value)
             else:

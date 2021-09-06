@@ -80,9 +80,9 @@ def cowell(k, r, v, tofs, rtol=1e-11, *, events=None, f=func_twobody):
     calculates the other values via dense output
 
     """
-    k = k.to(u.km ** 3 / u.s ** 2).value
-    x, y, z = r.to(u.km).value
-    vx, vy, vz = v.to(u.km / u.s).value
+    k = k.to(u.au ** 3 / u.s ** 2).value
+    x, y, z = r.to(u.au).value
+    vx, vy, vz = v.to(u.au / u.s).value
     tofs = tofs.to(u.s).value
 
     u0 = np.array([x, y, z, vx, vy, vz])
@@ -115,7 +115,7 @@ def cowell(k, r, v, tofs, rtol=1e-11, *, events=None, f=func_twobody):
         rrs.append(y[:3])
         vvs.append(y[3:])
 
-    return rrs * u.km, vvs * u.km / u.s
+    return rrs * u.au, vvs * u.au / u.s
 
 
 def farnocchia(k, r, v, tofs, **kwargs):
@@ -140,16 +140,16 @@ def farnocchia(k, r, v, tofs, **kwargs):
         Propagated velocity vectors.
 
     """
-    k = k.to(u.km ** 3 / u.s ** 2).value
-    r0 = r.to(u.km).value
-    v0 = v.to(u.km / u.s).value
+    k = k.to(u.au ** 3 / u.s ** 2).value
+    r0 = r.to(u.au).value
+    v0 = v.to(u.au / u.s).value
     tofs = tofs.to(u.s).value
 
     results = [farnocchia_fast(k, r0, v0, tof) for tof in tofs]
     # TODO: Rewrite to avoid iterating twice
     return (
-        [result[0] for result in results] * u.km,
-        [result[1] for result in results] * u.km / u.s,
+        [result[0] for result in results] * u.au,
+        [result[1] for result in results] * u.au / u.s,
     )
 
 
@@ -189,16 +189,16 @@ def vallado(k, r, v, tofs, numiter=350, **kwargs):
     and 85 % faster.
 
     """
-    k = k.to(u.km ** 3 / u.s ** 2).value
-    r0 = r.to(u.km).value
-    v0 = v.to(u.km / u.s).value
+    k = k.to(u.au ** 3 / u.s ** 2).value
+    r0 = r.to(u.au).value
+    v0 = v.to(u.au / u.s).value
     tofs = tofs.to(u.s).value
 
     results = [_kepler(k, r0, v0, tof, numiter=numiter) for tof in tofs]
     # TODO: Rewrite to avoid iterating twice
     return (
-        [result[0] for result in results] * u.km,
-        [result[1] for result in results] * u.km / u.s,
+        [result[0] for result in results] * u.au,
+        [result[1] for result in results] * u.au / u.s,
     )
 
 

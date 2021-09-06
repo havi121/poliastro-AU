@@ -117,7 +117,7 @@ class TisserandPlotter:
         elif self.kind == TisserandKind.ENERGY:
             # Generate energy lines
             lines = self.ax.plot(
-                RR_P.to(u.AU), EE.to(u.km ** 2 / u.s ** 2), color=color
+                RR_P.to(u.AU), EE.to(u.au ** 2 / u.s ** 2), color=color
             )
         elif self.kind == TisserandKind.PERIOD:
             # Generate period lines

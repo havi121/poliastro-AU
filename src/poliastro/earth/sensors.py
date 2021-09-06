@@ -2,7 +2,7 @@ import numpy as np
 from astropy import units as u
 
 
-@u.quantity_input(h=u.km, η_fov=u.rad, η_center=u.rad, R=u.km)
+@u.quantity_input(h=u.au, η_fov=u.rad, η_center=u.rad, R=u.au)
 def min_and_max_ground_range(h, η_fov, η_center, R):
     """Calculates the minimum and maximum values of ground-range angles
 
@@ -49,7 +49,7 @@ def min_and_max_ground_range(h, η_fov, η_center, R):
 
 
 @u.quantity_input(
-    h=u.km, η_fov=u.rad, η_center=u.rad, β=u.rad, φ_nadir=u.rad, λ_nadir=u.rad, R=u.km
+    h=u.au, η_fov=u.rad, η_center=u.rad, β=u.rad, φ_nadir=u.rad, λ_nadir=u.rad, R=u.au
 )
 def ground_range_diff_at_azimuth(h, η_fov, η_center, β, φ_nadir, λ_nadir, R):
     """Calculates the difference in ground-range angles from the η_center angle and the latitude and longitude of the target
